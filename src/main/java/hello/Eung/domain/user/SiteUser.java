@@ -1,4 +1,4 @@
-package hello.login.domain.user;
+package hello.Eung.domain.user;
 
 import lombok.Getter;
 import lombok.Setter;

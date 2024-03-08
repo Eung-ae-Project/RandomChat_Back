@@ -1,9 +1,9 @@
-package hello.login.web.login;
+package hello.Eung.web.login;
 
-import hello.login.domain.login.LoginService;
-import hello.login.domain.user.SiteUser;
-import hello.login.web.session.SessionConst;
-import hello.login.web.session.SessionManager;
+import hello.Eung.domain.login.LoginService;
+import hello.Eung.domain.user.SiteUser;
+import hello.Eung.web.session.SessionConst;
+import hello.Eung.web.session.SessionManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

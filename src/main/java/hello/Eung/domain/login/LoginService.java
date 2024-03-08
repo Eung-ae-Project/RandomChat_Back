@@ -1,7 +1,7 @@
-package hello.login.domain.login;
+package hello.Eung.domain.login;
 
-import hello.login.domain.user.SiteUser;
-import hello.login.domain.user.UserRepository;
+import hello.Eung.domain.user.SiteUser;
+import hello.Eung.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

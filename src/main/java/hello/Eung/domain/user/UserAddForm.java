@@ -1,4 +1,4 @@
-package hello.login.domain.user;
+package hello.Eung.domain.user;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
