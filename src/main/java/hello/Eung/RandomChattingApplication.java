@@ -1,4 +1,4 @@
-package hello.login;
+package hello.Eung;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
