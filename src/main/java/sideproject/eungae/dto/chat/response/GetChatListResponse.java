@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class GetChatListResponse {
-    private List<ChatResponse> chats;
+    private List<ChatBoxData> chats;
 }
