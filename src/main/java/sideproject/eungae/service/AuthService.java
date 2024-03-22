@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sideproject.eungae.dto.person.request.SignInRequest;
 import sideproject.eungae.dto.person.request.SignUpRequest;
 import sideproject.eungae.dto.person.response.SignUpResponse;
 import sideproject.eungae.exception.CustomException;
@@ -41,16 +42,23 @@ public class AuthService {
     }
     @Transactional
     public ResponseEntity<String> signIn(SignInRequest signInRequest){
-        String encodedPassword = findByLogin(signInRequest.getLogin()).getPassword();
+        String encodedPassword = findByLogin(signInRequest.getEmail()).getPassword();
         if (!encoder.matches(signInRequest.getPassword(), encodedPassword)){
             throw new CustomException(ErrorCode.WRONG_LOGIN_INPUT);
         }
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                findByLogin(signInRequest.getLogin()).getId(), encodedPassword);
+                findByLogin(signInRequest.getEmail()).getId(), encodedPassword);
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         TokenDto tokenDto = jwtTokenProvider.generateToken(authentication);
         Person person = findById(Long.valueOf(authentication.getName()));
         return refreshTokenService.saveToken(tokenDto, person);
     }
+    public Person findById(Long id){
+        return personRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
+    }
+    public Person findByLogin(String email){
+        return personRepository.findByEmail(email).orElseThrow(() -> new CustomException(ErrorCode.WRONG_LOGIN_INPUT));
+    }
+}
 }
 
