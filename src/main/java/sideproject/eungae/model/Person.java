@@ -18,47 +18,40 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String login;
+    private String email;
     private String password;
     private boolean gender;
-    private String mainAddress;
-    private String subAddress;
+    private String mbti;
+    private String nickname;
     private LocalDate birth;
-    private Double latitude;
-    private Double longitude;
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
 
 
-    public Person(String login, String password, String mainAddress, String subAddress, LocalDate birth, boolean gender, Double latitude, Double longitude) {
-        this.login = login;
+    public Person(String email, String password, String mbti,String nickname, LocalDate birth, boolean gender) {
+        this.email = email;
         this.password = password;
+        this.nickname = nickname;
         this.gender = gender;
-        this.mainAddress = mainAddress;
-        this.subAddress = subAddress;
         this.birth = birth;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.mbti = mbti;
+
         this.createdAt = LocalDate.now();
         this.updatedAt = LocalDate.now();
     }
     public void updatePerson(
             String password,
-            String mainAddress,
-            String subAddress,
+            String mbti,
+            String nickname,
             LocalDate birth,
-            boolean gender,
-            Double latitude,
-            Double longitude
+            boolean gender
     ) {
         this.password = password;
         this.gender = gender;
-        this.mainAddress = mainAddress;
-        this.subAddress = subAddress;
         this.birth = birth;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.nickname = nickname;
+        this.mbti = mbti;
         this.updatedAt = LocalDate.now();
     }
 }
